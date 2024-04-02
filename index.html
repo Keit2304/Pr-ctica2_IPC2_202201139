@@ -41,7 +41,7 @@
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #af4c9d;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -84,34 +84,29 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="registro-container">
-            <h1>Registro de Clientes</h1>
-            {% if alerta %}
-            <script>
-                alert("{{ alerta }}");
-            </script>
-            {% endif %}
-            {% if exito %}
-            <p>{{ exito }}</p>
-            {% endif %}
-            <form action="/agregar_cliente" method="post">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <br>
-                <label for="correo">Correo Electrónico:</label>
-                <input type="email" id="correo" name="correo" required>
-                <br>
-                <label for="nit">NIT:</label>
-                <input type="text" id="nit" name="nit" required>
-                <br>
-                <button type="submit">Guardar</button>
-            </form>
-        </div>
-        <div class="tabla-container">
-            <h2>Tabla de Clientes</h2>
-            {% include 'tabla_clientes.html' %}
-        </div>
+    <div class="registro-container">
+        <h1>Registro de Clientes</h1>
+        {% if alerta %}
+        <script>
+            alert("{{ alerta }}");
+        </script>
+        {% endif %}
+        {% if exito %}
+        <p>{{ exito }}</p>
+        {% endif %}
+        <form action="/agregar_cliente" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            <br>
+            <label for="nit">NIT:</label>
+            <input type="text" id="nit" name="nit" required>
+            <br>
+            <button type="submit">Guardar</button>
+        </form>
     </div>
 </body>
+</html>
 </html>
