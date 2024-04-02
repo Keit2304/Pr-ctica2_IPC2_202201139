@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 clientes = []
@@ -11,7 +11,7 @@ class Cliente:
 
 @app.route('/')
 def index():
-    return render_template('index.html', clientes=clientes)
+    return render_template('index.html')
 
 @app.route('/agregar_cliente', methods=['POST'])
 def agregar_cliente():
@@ -22,10 +22,14 @@ def agregar_cliente():
     nuevo_cliente = Cliente(nombre, correo, nit)
 
     if any(cliente.nit == nit for cliente in clientes):
-        return render_template('index.html', alerta=f"El cliente con NIT {nit} ya existe", clientes=clientes)
+        return render_template('index.html', alerta=f"El cliente con NIT {nit} ya existe")
 
     clientes.append(nuevo_cliente)
-    return render_template('index.html', exito="Cliente agregado exitosamente", clientes=clientes)
+    return render_template('index.html', exito="Cliente agregado exitosamente")
+
+@app.route('/getClientes')
+def get_clientes():
+    return render_template('tabla_clientes.html', clientes=clientes)
 
 if __name__ == '__main__':
     app.run(debug=True)
